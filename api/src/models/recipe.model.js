@@ -33,5 +33,4 @@ export const Recipe = sequelize.define('Recipes', {
 }, {
   timestamps: false,
 });
-Recipe.belongsToMany(TypeDiet, { through: 'recipe_diet', timestamps: false });
 TypeDiet.belongsToMany(Recipe, { through: 'recipe_diet', timestamps: false });
