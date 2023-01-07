@@ -1,6 +1,6 @@
 import { Recipe } from "../models/recipe.model.js";
-import { sequelize } from '../database/db.js';
 import { Op } from "sequelize";
+
 export const getRecipes = async (req, res) => {  
   try {
     const recipes = await Recipe.findAll();
@@ -13,7 +13,7 @@ export const getRecipes = async (req, res) => {
 }
 
 export const createRecipe = async (req, res) => {
-  const { name, summary, healthscore, steps, image, dishtypes } = req.body;
+  const { name, summary, healthscore, steps, image, dishtypes, typeDiet } = req.body;
   try { 
     const newRecipe = await Recipe.create({
       name,
@@ -21,7 +21,8 @@ export const createRecipe = async (req, res) => {
       healthscore,
       dishtypes,
       steps,
-      image
+      image,
+      typeDiet
     });
 
     res.json({ message: "Recipe created successfully", data: newRecipe });

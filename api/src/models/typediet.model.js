@@ -1,11 +1,11 @@
 import { DataTypes } from 'sequelize';
 import { sequelize } from '../database/db.js';
 
-export const TypeDiet = sequelize.define('TypeDiets', {
+export const TypeDiet = sequelize.define('TypeDiet', {
   id: {
     type: DataTypes.INTEGER,
-    primaryKey: true,
-    allowNull: false,
+      primaryKey: true,
+      autoIncrement: true,
   },
   name: {
     type: DataTypes.STRING,
