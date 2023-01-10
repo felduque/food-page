@@ -4,12 +4,12 @@ import { TypeDiet } from './typediet.model.js';
 
 export const Recipe = sequelize.define('Recipes', {
   id: {
-    type: DataTypes.UUID,
+    type: DataTypes.INTEGER,
     defaultValue: DataTypes.UUIDV4,
     primaryKey: true,
   },
   name: {
-    type: DataTypes.STRING,
+    type: DataTypes.TEXT,
     allowNull: false,
   },
   summary: {
@@ -20,15 +20,14 @@ export const Recipe = sequelize.define('Recipes', {
     type: DataTypes.INTEGER,
   },
   image: {
-    type: DataTypes.STRING,
+    type: DataTypes.TEXT,
     defaultValue:'https://cdn.pixabay.com/photo/2014/12/21/23/28/recipe-575434_640.png'
   },
   steps: {
-    type: DataTypes.ARRAY(DataTypes.STRING)
+    type: DataTypes.ARRAY(DataTypes.TEXT)
   },
   dishtypes: {
-    type: DataTypes.STRING
-    // type: DataTypes.ARRAY(DataTypes.STRING)
+    type: DataTypes.ARRAY(DataTypes.TEXT)
   }   
 }, {
   timestamps: false,
