@@ -1,0 +1,78 @@
+/*ESTILOS PARA EL CONTENIDO PRINCIPAL*/
+
+.content{
+  grid-area: content;
+  /* background: #f6f7f9; */
+  background-image: url('../../img/Polygon\ Luminary.svg');
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-grow: 1;
+}
+
+.recipe-item{
+  flex-grow: 1;
+  background: #27425E;
+  border-radius: 10px;
+  width: 180px;
+  height: 200px;
+  box-shadow: 0px 0px 6px #ddd;
+  margin: 20px;
+  padding-top: 60px;
+  padding-bottom: 60px;
+  padding-left: 25px;
+  padding-right: 25px;
+}
+.title{ 
+  font-size: 18px;
+  font-weight: 500;
+  color: #f0e7e0;
+  text-align: left;
+  margin-top: 0px;
+  margin-bottom: 10px;
+}
+
+.banner {
+  width: 100%;
+  height: 100%;
+  
+}
+
+button,
+input[type="submit"],
+input[type="button"]{
+  width: 100px;
+  background: #0b70e1;
+  color: white;
+  border: 0;
+  outline: 0;
+  padding:15px;
+  border-radius: 3px;
+  margin-top:15px;
+  text-transform: capitalize;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 300ms;
+}
+
+.recipe-item .edit:hover{
+  background: #e77b00;
+}
+
+.recipe-item .delete:hover{
+  background: #9b0202;
+}
+
+@media (max-width: 1085px){
+  .content {
+      flex-flow: column wrap;
+      justify-content: center;
+      align-items: center;
+  }
+
+  .recipe-item{
+      width: 80%;
+  }
+}

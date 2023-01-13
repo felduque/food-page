@@ -1,25 +1,17 @@
 import React from 'react'
 import { Route, Routes } from 'react-router-dom';
-import { About } from '../components/About/About';
-import { Footer } from '../components/Footer/Footer';
-import { Landing } from '../components/Landing/Landing';
-import { Navbar } from '../components/Navbar/Navbar';
+import { About } from '../components/About/About.jsx';
+import { Home } from '../components/Home/Home.jsx';
+import { CardDetail } from '../components/CardDetail/CardDetail.jsx';
 
-
-function Routerprincipal() {
+export const Routerprincipal = () => {
   return (
     <>
-    <Navbar />
     <Routes>
-
-      <Route path="/" element={<Landing />} />
+      <Route path="/" element={<Home />} />
       <Route path="/about" element={<About />} />
-
+      <Route path="/recipe/:id" element={<CardDetail />} />
     </Routes>
-    <Footer />
     </>
   )
-}
-export {
-  Routerprincipal
 }

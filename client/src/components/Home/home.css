@@ -1,0 +1,24 @@
+/*ESTILOS CABECERA*/
+
+.header{
+  grid-area: header;
+  background: rgb(211, 194, 194);
+  text-align: left;
+  font-style: italic;
+
+  display: flex;
+  justify-content: center;
+}
+
+.logo{
+  display: flex;
+  right: 100px;
+  margin-top: 10px;
+}
+
+
+
+.header h1{
+  margin-left: 15px;
+  margin-top: 30px;
+}
