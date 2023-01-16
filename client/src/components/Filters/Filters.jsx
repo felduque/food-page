@@ -18,7 +18,14 @@ export const Filters = () => {
 
   const handleSort = (e) => {
     e.preventDefault();
-    if(e.target.value === "asc") {
+    if(health === true && e.target.value === "desc") {
+      setza(true);
+      sethealth(false);
+    }else if(health === true && e.target.value === "asc") {
+      setaz(true);
+      sethealth(false);
+    }
+    else if(e.target.value === "asc") {
       setaz(true);
       setza(false);
     } else if (e.target.value === "desc") {
@@ -33,7 +40,7 @@ export const Filters = () => {
       setaz(false);
       setza(false);
       sethealth(true);
-    } else if (e.target.value === "health") {
+    } else if (e.target.value === "healt") {
       sethealth(true);
     }
   };
