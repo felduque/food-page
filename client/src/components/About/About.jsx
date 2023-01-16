@@ -13,7 +13,7 @@ export  const  About = () => {
         <img className={style.cajaImage} src={image} alt='AboutImage' />
         <div className={style.caja}>
         <h1>About Me</h1>
-          <div>
+          <div className={style.description}>
             Hi there 👋 I'm Felipe Duque I am a software development <br/>
             technician, passionate about web development. <br/><br/>🔭 I’m currently working
             on <b> HTML, CSS, JAVASRIPT, REACTJS, <br/> EXPRESS, SEQUELIZE, POSTGRESQL</b> <br/>🌱 I’m currently learning GO, MONGODB, MYSQL <br/> 💬 Ask me about

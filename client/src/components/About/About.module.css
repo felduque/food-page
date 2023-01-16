@@ -10,9 +10,15 @@
 
 .skills {
   font-size: 20px;
-  color: #8d8e91;
+  color: #e07c24;
   font-weight: bold;
 
+}
+
+.description {
+  font-size: 15px;
+  color: #9CD5F2;
+  font-weight: bold;
 }
 
 .cajaImage {
@@ -27,12 +33,12 @@
   height: 350px;
   border: 4px solid;
   border-radius: 10px;
-  background-color: #121316;
+  background-color: #0A1625;
   margin: 12px;  
 }
 
 .caja h1 {
-  color: aliceblue;
+  color: #F1F2F6;
   text-align: center;
 }
 
@@ -43,8 +49,4 @@
 
 .tecno {
   text-align: center;
-}
-
-.caja p {
-  color: #8d8e91;
 }
