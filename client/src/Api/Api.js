@@ -2,6 +2,15 @@ import axios from "axios";
 
 // methods to get data from the server
 
+export async function createRecipe (dataRecipe){
+  try {
+    console.log(dataRecipe);
+     await axios.post("http://localhost:3002/recipes", dataRecipe);
+  } catch (err) {
+    console.error(err, "Error en createRecipe");
+  }
+}
+
 export async function getAllRecipes() {
   try {
     const { data } = await axios.get("http://localhost:3002/recipes");

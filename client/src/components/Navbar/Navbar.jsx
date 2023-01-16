@@ -7,7 +7,7 @@ export const Navbar = () => {
     <nav className="nav">
           <ul>
             <li>
-            <Link to="/"> <strong>Home</strong> </Link>
+            <Link to="/home"> <strong>Home</strong> </Link>
             </li>
             <li>
             <Link to="/about"> <strong>About</strong> </Link> 
@@ -15,15 +15,10 @@ export const Navbar = () => {
             <li>
             <Link to="/filters"> <strong>Filtros</strong></Link> 
             </li>
+            <li>
+            <Link to="/form"> <strong>Create Recipe</strong></Link> 
+            </li>
           </ul>
         </nav>
 ) 
 }
-
-
-  // <nav className={style.navbar_container}>
-  //   <ul className={style.content}>
-  //     <Link to="/" className={style.caja}> <strong className={style.text}>Home</strong> </Link>
-  //     <Link to="/about" className={style.caja}> <strong className={style.text}>About</strong> </Link> 
-  //   </ul>
-  // </nav>

@@ -1,0 +1,101 @@
+.cardDetail__container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  padding: 0 20px;
+}
+
+.imagen {
+  margin: 20px;
+  border-radius: 20px;
+  width: 95%;
+  height: 400px;
+  object-fit: cover;
+}
+
+.homeIco {
+  position: absolute;
+  top: 20px;
+  left: 30px;
+  color: rgb(243, 73, 0);
+}
+.score {
+  position: absolute;
+  top: 10px;
+  right: 100px;
+  color: rgb(243, 73, 0);
+  font-size: 36px;
+  text-shadow: 1px 1px black;
+}
+.star {
+  position: absolute;
+  top: 40px;
+  right: 120px;
+  color: rgb(243, 73, 0);
+  font-size: 36px;
+  text-shadow: 1px 1px black;
+}
+
+
+.cardInfo {
+  margin: 20px;
+  border-radius: 41px;
+  height: 100%;
+  background: #292348;
+  box-shadow: 5px 5px 56px #929292, -5px -5px 56px #ffffff;
+}
+.cardInfo > h1 {
+  font-size: 2rem;
+  color: #ffffff;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-weight: bold;
+  margin: 20px 0;
+}
+
+.cardInfo > h2 {
+  font-size: 1.5rem;
+  color: #ffffff;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-weight: bold;
+  margin: 20px 0;
+  /* text-align: center; */
+}
+
+.cardInfo > p {
+  font-size: 1rem;
+  color: #99B9DC;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-weight: bold;
+  margin: 30px;
+  /* text-align: start; */
+}
+.diet {
+  padding: 10px;
+  text-align: center;
+  
+}
+
+.cardInfo > li {
+  font-size: 1rem;
+  color: #99B9DC;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  margin: 30px;
+  padding-bottom: 10px;
+  text-align: start;
+}
+
+.summary{
+  text-align: start;
+}
+
+.cardInfo > li > span {
+  font-size: 1rem;
+  color: #ff7700;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-weight: bold;
+  text-align: start;
+}
+

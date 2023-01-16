@@ -1,0 +1,22 @@
+.contend_form {
+  display: flex;
+  background-color: burlywood;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+ .contend_form > form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 30px;
+  height: 100%;
+ }
+
+ .contend_form > form > label {
+  margin: 20px;
+ }

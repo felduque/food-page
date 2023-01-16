@@ -50,7 +50,7 @@ export const Filters = () => {
       <>
           <h3 className={style.title_filter}>Filtros</h3>
         <div className={style.container_button}>
-          <Link to="/">
+          <Link to="/home">
             <HomeIcon width={60} height={60} />
           </Link >
           <button className={style.button_filter} value="asc" onClick={handleSort}>
@@ -94,6 +94,9 @@ export const Filters = () => {
       <>
           <h3 className={style.title_filter}>Filtros</h3>
         <div className={style.container_button}>
+        <Link to="/home">
+            <HomeIcon width={60} height={60} />
+          </Link >
           <button className={style.button_filter} value="asc" onClick={handleSort}>
             A-Z
           </button>
@@ -134,6 +137,9 @@ export const Filters = () => {
       <>
           <h3 className={style.title_filter}>Filtros</h3>
         <div className={style.container_button}>
+        <Link to="/home">
+            <HomeIcon width={60} height={60} />
+          </Link >
           <button className={style.button_filter} value="asc" onClick={handleSort}>
             A-Z
           </button>
@@ -174,6 +180,9 @@ export const Filters = () => {
       <>
           <h3 className={style.title_filter}>Filtros</h3>
         <div className={style.container_button}>
+        <Link to="/home">
+            <HomeIcon width={60} height={60} />
+          </Link >
           <button className={style.button_filter} value="asc" onClick={handleSort}>
             A-Z
           </button>

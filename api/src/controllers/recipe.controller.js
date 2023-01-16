@@ -63,9 +63,12 @@ export const getRecipeId = async (req, res) => {
   const id = req.params.id;
   try {
     const recipe = await Recipe.findOne({
-      where: {
-        id,
-      },
+      where: {id},
+      attributes: ["id", "name", "summary", "healthscore", "image", "steps", "dishtypes"],
+      include: {
+        model: TypeDiet,
+        attributes: ["name"],
+      }
     });
     res.json(recipe);
   } catch (err) {
