@@ -29,4 +29,5 @@
 
 .nav a:hover{
   transform: scale(1.1, 1.1);
+  color: rgb(174, 25, 237)
 }

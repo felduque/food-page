@@ -1,20 +1,27 @@
 import { Recipe } from "../models/recipe.model.js";
 import { Op } from "sequelize";
 import getRecipes from "./api.controller.js";
+import { TypeDiet } from "../models/typediet.model.js";
 
-export const getAllRecipe = async (req, res) => {
+export const getAllRecipe = async (req, res) => {  
   try {
-    const recipes = await Recipe.findAll();
-    res.json(recipes);
+    const recipes = await Recipe.findAll({
+      attributes: ["id", "name", "summary", "healthscore", "image", "steps", "dishtypes"],
+      include: {
+        model: TypeDiet,
+        attributes: ["name"],
+      }
+    })
+    res.json(recipes); 
   } catch (err) {
     res.status(500).json({
       message: err.message || "Something goes wrong retrieving the recipes",
     });
   }
-};
+}
 
 export const createRecipe = async (req, res) => {
-  const { name, summary, healthscore, steps, image, dishtypes, typeDiet } =
+  const { name, summary, healthscore, steps, image, dishtypes, typedietId  } =
     req.body;
   try {
     const newRecipe = await Recipe.create({
@@ -24,9 +31,8 @@ export const createRecipe = async (req, res) => {
       dishtypes,
       steps,
       image,
-      typeDiet,
+      typedietId,
     });
-
     res.json({ message: "Recipe created successfully", data: newRecipe });
   } catch (err) {
     res.status(500).json({
@@ -72,25 +78,43 @@ export const getRecipeId = async (req, res) => {
 export const createAllInfo = async (req, res) => {
   try {
     getRecipes().then(async (result) => {
-      const idSearch = result.map((r) => r.id);
-      console.log(idSearch);
-      const findID = await Recipe.findOne({
+      const name = result.map((r) => r.diets[0]).filter(x => typeof x === 'string').join(',');
+      const findTypeName = await TypeDiet.findOne({
         where: {
-          id: idSearch,
+          name: { [Op.iLike]: `%${name}%` } 
         },
-      });
-      if (!!findID) return res.status(400).json({ message: "Ya existe" });
-      result.forEach(async (r) => {
-        await Recipe.create({
-          id: r.id,
-          name: r.name,
-          image: r.image,
-          summary: r.summary,
-          healthscore: r.healthscore,
-          steps: r.steps,
-          dishtypes: r.dishtypes,
+      })
+      console.log("name")
+      if (!!findTypeName) {
+        const id = findTypeName.id
+        result.forEach(async (r) => {
+          await Recipe.create({
+            name: r.name,
+            image: r.image,
+            summary: r.summary,
+            healthscore: r.healthscore,
+            steps: r.steps,
+            dishtypes: r.dishtypes,
+            typedietId: id
+          });
         });
-      });
+      } else {
+        const newTypeDiet = await TypeDiet.create({
+          name
+        })
+        const id = newTypeDiet.id
+        result.forEach(async (r) => {
+          await Recipe.create({
+            name: r.name,
+            image: r.image,
+            summary: r.summary,
+            healthscore: r.healthscore,
+            steps: r.steps,
+            dishtypes: r.dishtypes,
+            typedietId: id
+          });
+        });
+      }
     });
     res.json("Creada con exito");
   } catch (err) {

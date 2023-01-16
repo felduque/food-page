@@ -1,0 +1,50 @@
+.container {
+  display: grid;
+  margin: 0 auto;
+  /* background-color: #8d8e91; */
+  grid-template-columns: 30% 70%;
+  align-items: center;
+  height: auto;
+  width: 100%;
+}
+
+.skills {
+  font-size: 20px;
+  color: #8d8e91;
+  font-weight: bold;
+
+}
+
+.cajaImage {
+  width: 300;
+  height: 350px;
+  margin: 12px;
+  border: 4px solid;
+  border-radius: 50px;
+}
+
+.caja {
+  height: 350px;
+  border: 4px solid;
+  border-radius: 10px;
+  background-color: #121316;
+  margin: 12px;  
+}
+
+.caja h1 {
+  color: aliceblue;
+  text-align: center;
+}
+
+.caja h2 {
+  color: #c6c7ca;
+  text-align: center;
+}
+
+.tecno {
+  text-align: center;
+}
+
+.caja p {
+  color: #8d8e91;
+}

@@ -4,7 +4,7 @@ import { TypeDiet } from './typediet.model.js';
 
 export const Recipe = sequelize.define('Recipes', {
   id: {
-    type: DataTypes.INTEGER,
+    type: DataTypes.UUID,
     defaultValue: DataTypes.UUIDV4,
     primaryKey: true,
   },
@@ -32,5 +32,8 @@ export const Recipe = sequelize.define('Recipes', {
 }, {
   timestamps: false,
 });
-TypeDiet.hasMany(Recipe, { foreignKey: 'typeDiet', sourceKey: 'id' });
-Recipe.belongsTo(TypeDiet, { foreignKey: 'typeDiet', targetId: 'id' });
+// TypeDiet.belongsToMany(Recipe, { through: "typedietId" });
+// Recipe.belongsToMany(TypeDiet, { through: "typedietId" });
+
+TypeDiet.hasMany(Recipe, { foreignKey: 'typedietId' });
+Recipe.belongsTo(TypeDiet, { foreignKey: 'typedietId' });

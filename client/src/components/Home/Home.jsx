@@ -7,24 +7,39 @@ import {Search} from "../SideBar/Search.jsx";
 import {Footer} from "../Footer/Footer.jsx";
 import { Card } from "../Card/Card.jsx";
 import { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
-import { About } from "../About/About";
-import { CardDetail } from "../CardDetail/CardDetail";
-
+// import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { addRecipe } from "../../redux/reducers/recipeSlice";
 
 export const Home = () => {
   const [id, setId] = useState(0);
+  const [lengthRecipe, setLengthRecipe] = useState(0);
+  const dispatch = useDispatch();
+  // const selector = useSelector((state) => state);
   useEffect(() => {
     getAllRecipes().then((recipes) => {
       const id = recipes.map((recipe) => recipe.id);
+      const leng = recipes.length;
       setId(id);
+      setLengthRecipe(leng);
+      recipes.forEach(e => {
+        dispatch(addRecipe({
+          id: e.id,
+          name: e.name,
+          image: e.image,
+          summary: e.summary,
+          healthscore: e.healthscore,
+          steps: e.steps,
+          dishtypes: e.dishtypes,
+        }))
+      })
+      console.log(recipes, "Estoy en Home")
     });
-  }, [])
-  const location = useLocation();
-  const [ pagination, setPagination ] = useState(12)
+  }, [dispatch])
+
+  const [ pagination, setPagination ] = useState(6)
   return (
     <>
-    
     <div className="layout">
         {/*Cabecera*/}
         <header className="header">
@@ -39,16 +54,24 @@ export const Home = () => {
         </nav>
 
         <section key={id} className="content">
-        {location.pathname === "/" ? <Card  pagination={pagination} /> : null}
-        {location.pathname === "/about" ? <About /> : null}
-        {location.pathname === "/recipe/:id" ? <CardDetail /> : null}
+        <Card  pagination={pagination} /> 
+      
         </section>
 
         {/*Barra lateral*/}
         <aside className="lateral">
          <Search />
-         <button className="pagination_sum" onClick={() => setPagination(pagination + 12)}>🢂</button>
-         <button className="pagination_res" onClick={() => setPagination(pagination - 12)}>🢀</button>
+         <button className="pagination_sum" onClick={() => setPagination(pagination + 3)}>
+          {pagination >= lengthRecipe ? (
+          "Ultima Pagina") : "🢂"
+          }
+          
+          </button>
+         <button className="pagination_res" onClick={() => setPagination(pagination - 3)}>
+         {pagination <= 6 ? (
+          "Primera Pagina") : "🢀"
+          }
+          </button>
         </aside>
         
         

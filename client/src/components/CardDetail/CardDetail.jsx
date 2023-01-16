@@ -8,10 +8,8 @@ export const CardDetail = (props) => {
   useEffect(() => {
     getRecipeId(id).then((recipe) => {
       setRecipes(recipe)
-      console.log(recipe, 'Soy recipe')
     })
-  }
-  )
+  }, [id])
   return (
     <>
           <article>

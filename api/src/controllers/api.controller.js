@@ -15,17 +15,19 @@ async function getRecipes(req, res) {
       );
       //console.log(data.recipes);
       const writeData = data.recipes.map((r) => {
+        console.log(r.diets)
           return {
-              id: r.id,
               name: r.title,
               image: r.image,
               summary: r.summary.replaceAll(/<(“[^”]”|'[^’]’|[^'”>])*>/g, ''),
               healthscore: r.healthScore,
-              steps: r.analyzedInstructions[0].steps.map((s) => s.step),
-              dishtypes: r.dishTypes,
-              typeDiet: r.diets,
+              steps : r.analyzedInstructions[0].steps.length ? r.analyzedInstructions[0].steps.map((s) => s.step) : ["No steps"],
+              dishtypes: r.dishTypes ? r.dishTypes : ["No dish type"],
+              diets: r.diets,
           };
+          
       });
+//               steps: r.analyzedInstructions[0].steps?.map((s) => s.step),
 
       return writeData;
   } catch (err) {

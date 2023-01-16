@@ -12,6 +12,9 @@ export const Navbar = () => {
             <li>
             <Link to="/about"> <strong>About</strong> </Link> 
             </li>
+            <li>
+            <Link to="/filters"> <strong>Filtros</strong></Link> 
+            </li>
           </ul>
         </nav>
 ) 

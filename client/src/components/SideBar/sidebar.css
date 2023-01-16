@@ -2,7 +2,6 @@
 
 .lateral{
   grid-area: lateral;
-  /* background: #f6f7f9; */
   background-image: url('../../img/Polygon\ Luminary.svg');
   border-left: 5px solid #ddd;
   padding: 20px;
@@ -32,6 +31,14 @@
   border-radius: 10px;
   box-shadow: 0px 0px 6px #ddd;
 }
+
+.filter_search {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
 /* Boton Resta */
 .pagination_res{
   font-size: 10px; /* Cambiar el tamaño de la tipografia */
@@ -92,6 +99,14 @@
 		right: 20px;
 	}
 } 
+
+.return_home {
+	background-color: #b67b34;
+	color: #f6f7f9;
+	text-decoration: none;
+	border-radius: 30px;
+	padding: 4px;
+}
 
 .lateral input[type="text"],
 .lateral input[type="text"],

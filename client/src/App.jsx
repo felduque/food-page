@@ -1,4 +1,3 @@
-import "./app.css";
 
 import { Routerprincipal } from "./routing/Routerprincipal";
 
