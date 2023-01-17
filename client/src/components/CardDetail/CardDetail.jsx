@@ -32,6 +32,13 @@ export const CardDetail = (props) => {
           <p className={style.summary}>{recipes.summary}</p>
           <h2>Diets</h2>
           <p className={style.diet}>{recipes.TypeDiet?.name}</p>
+          <h2>Dishtypes</h2>
+          {recipes.dishtypes?.map((s, i) => (
+            <li key={i}>
+              {" "}
+              <span># {i} |</span> {s}
+            </li>
+          ))}
           <h2>Steps</h2>
           {recipes.steps?.map((s, i) => (
             <li key={i}>
