@@ -3,8 +3,8 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "./card.css";
 import { useSelector } from "react-redux";
-
 export const Card = ({ pagination }) => {
+
   const [recipes, setRecipes] = useState([]);
   const selector = useSelector((state) => state.search);
   const selectorRecipe = useSelector((state) => state.recipe);
@@ -12,10 +12,6 @@ export const Card = ({ pagination }) => {
   useEffect(() => {
     setRecipes(selectorRecipe);
   }, [selectorRecipe]);
-
-
-  console.log(recipes, "Estoy en el card")
-  
   if (selector.length === 0) {
     return (
       <>

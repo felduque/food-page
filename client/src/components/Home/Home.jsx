@@ -7,15 +7,16 @@ import {Search} from "../SideBar/Search.jsx";
 import {Footer} from "../Footer/Footer.jsx";
 import { Card } from "../Card/Card.jsx";
 import { useEffect, useState } from "react";
-// import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { addRecipe } from "../../redux/reducers/recipeSlice";
+import { Loading } from "../Loading/Loading";
 
 export const Home = () => {
   const [id, setId] = useState(0);
+  const [loading, setLoading] = useState(true);
   const [lengthRecipe, setLengthRecipe] = useState(0);
   const dispatch = useDispatch();
-  // const selector = useSelector((state) => state);
+  const [ pagination, setPagination ] = useState(6)
   useEffect(() => {
     getAllRecipes().then((recipes) => {
       const id = recipes.map((recipe) => recipe.id);
@@ -36,8 +37,10 @@ export const Home = () => {
       console.log(recipes, "Estoy en Home")
     });
   }, [dispatch])
-
-  const [ pagination, setPagination ] = useState(6)
+  setTimeout(() => {
+    setLoading(false);
+  }, 3000);
+  if(loading) return (<Loading />)
   return (
     <>
     <div className="layout">

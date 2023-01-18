@@ -1,11 +1,14 @@
-import React from 'react'
-
 import style from "./About.module.css";
 import image from './profile.jpeg'
 import { Navbar } from '../Navbar/Navbar.jsx'
-
+import { Loading } from '../Loading/Loading';
+import { useState } from 'react';
 export  const  About = () => {
-  // const [loading, setLoading] = React.useState(false)
+  const [loading, setLoading] = useState(true);
+  setTimeout(() => {
+    setLoading(false);
+  }, 3000);
+  if(loading) return (<Loading />)
     return (
       <>
       <Navbar />

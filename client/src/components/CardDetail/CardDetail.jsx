@@ -6,8 +6,13 @@ import style from "./CardDetail.module.css";
 import { Star } from "../Icons/Star.js";
 import { Link } from "react-router-dom";
 import { HomeIcon } from "../Icons/Home.js";
+import { Loading } from "../Loading/Loading.jsx";
 
 export const CardDetail = (props) => {
+  const [loading, setLoading] = useState(true);
+  setTimeout(() => {
+    setLoading(false);
+  }, 3000);
   const { id } = useParams();
   const [recipes, setRecipes] = useState({});
   useEffect(() => {
@@ -15,6 +20,7 @@ export const CardDetail = (props) => {
       setRecipes(recipe);
     });
   }, [id]);
+  if(loading) return (<Loading />)
   return (
     <>
       <div className={style.cardDetail_container}>
