@@ -39,6 +39,8 @@
 	align-items: center;
 }
 
+/* Text Paginado */
+
 .pagination_text {
 	font-size: 11px; 
 	text-transform: uppercase; 

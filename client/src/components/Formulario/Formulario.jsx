@@ -1,17 +1,22 @@
-import React from "react";
 import style from "./Formulario.module.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { validate } from "./validate";
 import { createRecipe } from "../../Api/Api";
 import { Navbar } from "../Navbar/Navbar";
 import { useNavigate } from "react-router-dom";
 import { Loading } from "../Loading/Loading";
+import { useDispatch } from "react-redux";
+import { addRecipe } from "../../redux/reducers/recipeSlice";
 export const Formulario = () => {
+  const navigate = useNavigate();
+
+  const dispatch = useDispatch();
+
   const [loading, setLoading] = useState(false);
   const [errors, setErrors] = useState({});
   const [steps, setSteps] = useState("");
   const [dishtypes, setDishtypes] = useState("");
-  const navigate = useNavigate();
+  const [buttonDisable, setbuttonDisable] = useState(true);
   const [dataRecipe, setDataRecipe] = useState({
     name: "",
     summary: "",
@@ -74,6 +79,9 @@ export const Formulario = () => {
         steps: dataRecipe.steps,
         typedietId: diet,
       });
+      dispatch(addRecipe(dataRecipe));
+
+
       navigate("/home");
     }
   };
@@ -146,6 +154,20 @@ export const Formulario = () => {
     });
   }
 
+  useEffect(() => {
+    if (
+      dataRecipe.name.length > 5 &&
+      dataRecipe.summary.length > 50 &&
+      dataRecipe.healthscore.length > 0 &&
+      dataRecipe.steps.length > 0 &&
+      dataRecipe.dishtypes.length > 0 &&
+      dataRecipe.typedietId.length > 0
+    ) {
+      setbuttonDisable(false);
+    } else {
+      setbuttonDisable(true);
+    }
+  })
 
   setTimeout(() => {
     setLoading(true);
@@ -303,7 +325,7 @@ export const Formulario = () => {
           }
         />
 
-        <button type="submit">Submit</button>
+        <button className={style.submitButton} disabled={buttonDisable} type="submit">Submit</button>
       </form>
     </div>
   );

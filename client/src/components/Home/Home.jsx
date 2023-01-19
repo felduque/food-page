@@ -68,9 +68,6 @@ export const Home = () => {
         <aside className="lateral">
          <Search />
           <p className="pagination_text">Pagina {page} de {totalpage}</p>
-         
-
-
         {page === 1 ? (
           <button className="pagination_res">Primera Pagina</button>
         ): (
