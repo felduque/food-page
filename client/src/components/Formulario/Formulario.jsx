@@ -21,7 +21,6 @@ export const Formulario = () => {
     dishtypes: [],
     typedietId: "",
   });
-
   const handleChange = (e) => {
     setErrors(
       validate({
@@ -39,7 +38,6 @@ export const Formulario = () => {
       setErrors({});
     }
   };
-
   const handleSubmit = (e) => {
     e.preventDefault();
     if (Object.keys(errors).length === 0) {
@@ -77,13 +75,13 @@ export const Formulario = () => {
       navigate("/home");
     }
   };
-  // Steps and dishtypes 
+  // Steps and dishtypes
 
   const handleSteps = (e) => {
     e.preventDefault();
-    if(dataRecipe.steps.length === 15) return alert("El maximo son 14 pasos")
-    if(steps.length >= 220) return alert("El maximo son 220 caracteres")
-    if(steps.length <= 10) return alert("Ingresa mas de 10 caracteres")
+    if (dataRecipe.steps.length === 15) return alert("El maximo son 14 pasos");
+    if (steps.length >= 220) return alert("El maximo son 220 caracteres");
+    if (steps.length <= 10) return alert("Ingresa mas de 10 caracteres");
     setDataRecipe({
       ...dataRecipe,
       steps: [...dataRecipe.steps, steps],
@@ -93,75 +91,77 @@ export const Formulario = () => {
 
   const deleteOneStep = (e) => {
     let steps = dataRecipe.steps;
-    if(steps.length === 0) return alert("No hay pasos para eliminar")
+    if (steps.length === 0) return alert("No hay pasos para eliminar");
     let index = e.target.value;
     steps.splice(index, 1);
     setDataRecipe({
       ...dataRecipe,
       steps: steps,
     });
-  }
+  };
 
   const deleteLastStep = (e) => {
     let steps = dataRecipe.steps;
-    if(steps.length === 0) return alert("No hay pasos para eliminar")
+    if (steps.length === 0) return alert("No hay pasos para eliminar");
     steps.pop();
     setDataRecipe({
       ...dataRecipe,
       steps: steps,
     });
-  }
+  };
 
   const handleDishtypes = (e) => {
     e.preventDefault();
-    if(dataRecipe.dishtypes.length === 8) return alert("El maximo son 7 tipos de platos")
-    if(dishtypes.length >= 220) return alert("El maximo son 220 caracteres")
-    if(dishtypes.length <= 10) return alert("Ingresa mas de 10 caracteres")
+    if (dataRecipe.dishtypes.length === 8)
+      return alert("El maximo son 7 tipos de platos");
+    if (dishtypes.length >= 220) return alert("El maximo son 220 caracteres");
+    if (dishtypes.length <= 10) return alert("Ingresa mas de 10 caracteres");
     setDataRecipe({
       ...dataRecipe,
       dishtypes: [...dataRecipe.dishtypes, dishtypes],
     });
     setDishtypes("");
   };
-  
 
   const deleteOneDishtype = (e) => {
     let dishtypes = dataRecipe.dishtypes;
-    if(dishtypes.length === 0) return alert("No hay tipos de platos para eliminar")
+    if (dishtypes.length === 0)
+      return alert("No hay tipos de platos para eliminar");
     let index = e.target.value;
     dishtypes.splice(index, 1);
     setDataRecipe({
       ...dataRecipe,
       dishtypes: dishtypes,
     });
-  }
+  };
 
   const deleteLastDishtype = (e) => {
     let dishtypes = dataRecipe.dishtypes;
-    if(dishtypes.length === 0) return alert("No hay tipos de platos para eliminar")
+    if (dishtypes.length === 0)
+      return alert("No hay tipos de platos para eliminar");
     dishtypes.pop();
     setDataRecipe({
       ...dataRecipe,
       dishtypes: dishtypes,
     });
-  }
+  };
   // let recipes = res.data
   // let random = Math.floor(Math.random() * recipes.length);
   // let recipe = recipes[random]
   const createRecipeAuto = async (e) => {
     e.preventDefault();
 
-    await createAllInfo()
+    await createAllInfo();
 
     setTimeout(() => {
-       getAllRecipes().then((res) => {
-        let recipe = res[res.length - 1]
-        let id = recipe.id
-        console.log(id)
-        navigate(`/recipe/${id}`)
+      getAllRecipes().then((res) => {
+        let recipe = res[res.length - 1];
+        let id = recipe.id;
+        console.log(id);
+        navigate(`/recipe/${id}`);
       });
     }, 3000);
-  }
+  };
 
   useEffect(() => {
     if (
@@ -189,7 +189,9 @@ export const Formulario = () => {
       <h1>Formulario</h1>
 
       <form onSubmit={handleSubmit}>
-      <button className={style.buttonAutoRecipe} onClick={createRecipeAuto}>Create Auto Recipe</button>
+        <button className={style.buttonAutoRecipe} onClick={createRecipeAuto}>
+          Create Auto Recipe
+        </button>
         <label htmlFor="name">Name</label>
         <span className={style.err}>
           {errors.name && <p className="error">{errors.name}</p>}
@@ -269,15 +271,15 @@ export const Formulario = () => {
           onChange={(e) => handleChange(setDishtypes(e.target.value))}
         />
         <div className={style.contend_btn}>
-        <button type="button" onClick={handleDishtypes}>
-          Add Recipe
-        </button>
-        <button type="button" onClick={deleteOneDishtype}>
-          Delete One
-        </button>
-        <button type="button" onClick={deleteLastDishtype}>
-          Delete Last
-        </button>
+          <button type="button" onClick={handleDishtypes}>
+            Add Recipe
+          </button>
+          <button type="button" onClick={deleteOneDishtype}>
+            Delete One
+          </button>
+          <button type="button" onClick={deleteLastDishtype}>
+            Delete Last
+          </button>
         </div>
         {dataRecipe.dishtypes &&
           dataRecipe.dishtypes.map((e, i) => {
@@ -301,15 +303,15 @@ export const Formulario = () => {
           onChange={(e) => handleChange(setSteps(e.target.value))}
         />
         <div className={style.contend_btn}>
-        <button type="button" onClick={handleSteps}>
-          Add Recipe
-        </button>
-        <button type="button" onClick={deleteOneStep}>
-          Delete One
-        </button>
-        <button type="button" onClick={deleteLastStep} >
-          Delete Last
-        </button>
+          <button type="button" onClick={handleSteps}>
+            Add Recipe
+          </button>
+          <button type="button" onClick={deleteOneStep}>
+            Delete One
+          </button>
+          <button type="button" onClick={deleteLastStep}>
+            Delete Last
+          </button>
         </div>
         {dataRecipe.steps &&
           dataRecipe.steps.map((e, i) => {
@@ -336,7 +338,13 @@ export const Formulario = () => {
           }
         />
 
-        <button className={style.submitButton} disabled={buttonDisable} type="submit">Submit</button>
+        <button
+          className={style.submitButton}
+          disabled={buttonDisable}
+          type="submit"
+        >
+          Submit
+        </button>
       </form>
     </div>
   );

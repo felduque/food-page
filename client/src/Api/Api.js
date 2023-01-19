@@ -11,6 +11,14 @@ export async function createRecipe (dataRecipe){
   }
 }
 
+export async function createAllInfo (){
+  try {
+     await axios.post("https://food-backend.fly.dev/api/getallinfo");
+  } catch (err) {
+    console.error(err, "Error en createAllInfo");
+  }
+}
+
 export async function getAllRecipes() {
   try {
     const { data } = await axios.get("https://food-backend.fly.dev/recipes");

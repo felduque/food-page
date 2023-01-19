@@ -32,10 +32,7 @@ export const Home = () => {
           id: e.id,
           name: e.name,
           image: e.image,
-          summary: e.summary,
           healthscore: e.healthscore,
-          steps: e.steps,
-          dishtypes: e.dishtypes,
         }))
       })
     });
