@@ -1,13 +1,13 @@
-import Sequelize from 'sequelize';
+import dotenv from 'dotenv'
+dotenv.config()
+import Sequelize from "sequelize";
 
-const { DB_USER, DB_PASSWORD, DB_HOST, PORT_NUMBER } = process.env;
-export const sequelize = new Sequelize(`postgres://hnmkyivk:xYxe-Wp0HdUvni8dyhIC6RqqaO3CEVzv@isilo.db.elephantsql.com/hnmkyivk
-`, {
-logging: false,
-});
+// const { PGUSER, PGPASSWORD, PGHOST, PGPORT, PGDATABASE } = process.env;
 
-// Local 
-// postgres://postgres:151623@localhost:5432/food
-
-// Nube
-// postgres://hnmkyivk:xYxe-Wp0HdUvni8dyhIC6RqqaO3CEVzv@isilo.db.elephantsql.com/hnmkyivk
+export const sequelize = new Sequelize(
+  `postgresql://postgres:VSgWeeJMi8w5XO91tHHP@containers-us-west-157.railway.app:6559/railway`,
+  {
+    logging: false,
+  }
+);
+//postgresql://${PGUSER}:${PGPASSWORD}@${PGHOST}:${PGPORT}/${PGDATABASE}

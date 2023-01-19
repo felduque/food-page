@@ -13,7 +13,6 @@ async function getRecipes(req, res) {
           `https://api.spoonacular.com/recipes/random?apiKey=44ff1d165b1d405181967465ef30ca64`,
           { headers }
       );
-      //console.log(data.recipes);
       const writeData = data.recipes.map((r) => {
         console.log(r.diets)
           return {
@@ -27,8 +26,6 @@ async function getRecipes(req, res) {
           };
           
       });
-//               steps: r.analyzedInstructions[0].steps?.map((s) => s.step),
-
       return writeData;
   } catch (err) {
       console.error(err);
