@@ -1,17 +1,12 @@
 import style from "./Formulario.module.css";
 import { useState, useEffect } from "react";
 import { validate } from "./validate";
-import { createRecipe } from "../../Api/Api";
+import { createRecipe, createAllInfo, getAllRecipes } from "../../Api/Api";
 import { Navbar } from "../Navbar/Navbar";
 import { useNavigate } from "react-router-dom";
 import { Loading } from "../Loading/Loading";
-import { useDispatch } from "react-redux";
-import { addRecipe } from "../../redux/reducers/recipeSlice";
 export const Formulario = () => {
   const navigate = useNavigate();
-
-  const dispatch = useDispatch();
-
   const [loading, setLoading] = useState(false);
   const [errors, setErrors] = useState({});
   const [steps, setSteps] = useState("");
@@ -79,9 +74,6 @@ export const Formulario = () => {
         steps: dataRecipe.steps,
         typedietId: diet,
       });
-      dispatch(addRecipe(dataRecipe));
-
-
       navigate("/home");
     }
   };
@@ -153,6 +145,23 @@ export const Formulario = () => {
       dishtypes: dishtypes,
     });
   }
+  // let recipes = res.data
+  // let random = Math.floor(Math.random() * recipes.length);
+  // let recipe = recipes[random]
+  const createRecipeAuto = async (e) => {
+    e.preventDefault();
+
+    await createAllInfo()
+
+    setTimeout(() => {
+       getAllRecipes().then((res) => {
+        let recipe = res[res.length - 1]
+        let id = recipe.id
+        console.log(id)
+        navigate(`/recipe/${id}`)
+      });
+    }, 3000);
+  }
 
   useEffect(() => {
     if (
@@ -167,7 +176,7 @@ export const Formulario = () => {
     } else {
       setbuttonDisable(true);
     }
-  })
+  }, [dataRecipe]);
 
   setTimeout(() => {
     setLoading(true);
@@ -178,7 +187,9 @@ export const Formulario = () => {
     <div className={style.contend_form}>
       <Navbar />
       <h1>Formulario</h1>
+
       <form onSubmit={handleSubmit}>
+      <button className={style.buttonAutoRecipe} onClick={createRecipeAuto}>Create Auto Recipe</button>
         <label htmlFor="name">Name</label>
         <span className={style.err}>
           {errors.name && <p className="error">{errors.name}</p>}
