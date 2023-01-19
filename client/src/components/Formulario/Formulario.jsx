@@ -83,6 +83,7 @@ export const Formulario = () => {
     e.preventDefault();
     if(dataRecipe.steps.length === 15) return alert("El maximo son 14 pasos")
     if(steps.length >= 220) return alert("El maximo son 220 caracteres")
+    if(steps.length <= 10) return alert("Ingresa mas de 10 caracteres")
     setDataRecipe({
       ...dataRecipe,
       steps: [...dataRecipe.steps, steps],
@@ -115,6 +116,7 @@ export const Formulario = () => {
     e.preventDefault();
     if(dataRecipe.dishtypes.length === 8) return alert("El maximo son 7 tipos de platos")
     if(dishtypes.length >= 220) return alert("El maximo son 220 caracteres")
+    if(dishtypes.length <= 10) return alert("Ingresa mas de 10 caracteres")
     setDataRecipe({
       ...dataRecipe,
       dishtypes: [...dataRecipe.dishtypes, dishtypes],
