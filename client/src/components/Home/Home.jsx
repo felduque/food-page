@@ -15,8 +15,12 @@ export const Home = () => {
   const [id, setId] = useState(0);
   const [loading, setLoading] = useState(true);
   const [lengthRecipe, setLengthRecipe] = useState(0);
+  const [page, setPage] = useState(1);
+  const totalpage = Math.ceil(lengthRecipe / 3 - 1);
   const dispatch = useDispatch();
   const [ pagination, setPagination ] = useState(6)
+  console.log(totalpage)
+
   useEffect(() => {
     getAllRecipes().then((recipes) => {
       const id = recipes.map((recipe) => recipe.id);
@@ -24,7 +28,7 @@ export const Home = () => {
       setId(id);
       setLengthRecipe(leng);
       recipes.forEach(e => {
-        dispatch(addRecipe({
+        dispatch(addRecipe({ 
           id: e.id,
           name: e.name,
           image: e.image,
@@ -34,7 +38,6 @@ export const Home = () => {
           dishtypes: e.dishtypes,
         }))
       })
-      console.log(recipes, "Estoy en Home")
     });
   }, [dispatch])
   setTimeout(() => {
@@ -64,17 +67,23 @@ export const Home = () => {
         {/*Barra lateral*/}
         <aside className="lateral">
          <Search />
-         <button className="pagination_sum" onClick={() => setPagination(pagination + 3)}>
-          {pagination >= lengthRecipe ? (
-          "Ultima Pagina") : "🢂"
-          }
-          
-          </button>
-         <button className="pagination_res" onClick={() => setPagination(pagination - 3)}>
-         {pagination <= 6 ? (
-          "Primera Pagina") : "🢀"
-          }
-          </button>
+          <p className="pagination_text">Pagina {page} de {totalpage}</p>
+         
+
+
+        {page === 1 ? (
+          <button className="pagination_res">Primera Pagina</button>
+        ): (
+          <button className="pagination_res" onClick={() => {setPagination(pagination - 3); setPage(page - 1)}}>🢀</button>
+        )}
+
+        {page === totalpage ? (
+          <button className="pagination_sum">Ultima Pagina</button>
+        ): (
+          <button className="pagination_sum" onClick={() => {setPagination(pagination + 3); setPage(page + 1)}}>🢂</button>
+        )}
+
+
         </aside>
         
         

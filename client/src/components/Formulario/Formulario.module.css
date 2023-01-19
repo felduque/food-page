@@ -84,3 +84,18 @@
   margin: 16px;
   cursor: pointer;
 }
+.submitButton{
+  background-color: #df9758;
+  border: none;
+  border-radius: 5px;
+  color: #ffffff;
+  font-size: 20px;
+  font-weight: bold;
+  margin: 16px;
+  cursor: pointer;
+}
+
+.submitButton:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
