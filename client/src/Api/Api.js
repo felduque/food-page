@@ -4,8 +4,8 @@ import axios from "axios";
 
 export async function createRecipe (dataRecipe){
   try {
-    console.log(dataRecipe);
-     await axios.post("http://localhost:3002/recipes", dataRecipe);
+    console.log(dataRecipe.length);
+     await axios.post("https://food-backend.fly.dev/recipes", dataRecipe);
   } catch (err) {
     console.error(err, "Error en createRecipe");
   }
@@ -13,7 +13,7 @@ export async function createRecipe (dataRecipe){
 
 export async function getAllRecipes() {
   try {
-    const { data } = await axios.get("http://localhost:3002/recipes");
+    const { data } = await axios.get("https://food-backend.fly.dev/recipes");
     return data;
   } catch (err) {
     console.error(err, "Error en getAllRecipes");
@@ -22,7 +22,7 @@ export async function getAllRecipes() {
 
 export async function getRecipeId(id) {
   try {
-    const { data } = await axios.get(`http://localhost:3002/recipes/id/${id}`);
+    const { data } = await axios.get(`https://food-backend.fly.dev/recipes/id/${id}`);
     return data;
   } catch (err) {
     console.error(err, "Error en getRecipeId");
@@ -32,7 +32,7 @@ export async function getRecipeId(id) {
 export async function getRecipeByName(name) {
   try {
     const { data } = await axios.get(
-      `http://localhost:3002/recipes/name/${name}`
+      `https://food-backend.fly.dev/recipes/name/${name}`
     );
     return data;
   } catch (err) {
@@ -44,7 +44,7 @@ export async function getRecipeByName(name) {
 
 export async function getAllTypeDiets() {
   try {
-    const { data } = await axios.get("http://localhost:3002/types");
+    const { data } = await axios.get("https://food-backend.fly.dev/types");
     return data;
   } catch (err) {
     console.error(err, "Error en getAllTypeDiets");
@@ -53,7 +53,7 @@ export async function getAllTypeDiets() {
 
 export async function getTypeDietId(id) {
   try {
-    const { data } = await axios.get(`http://localhost:3002/types/${id}`);
+    const { data } = await axios.get(`https://food-backend.fly.dev/types/${id}`);
     return data;
   } catch (err) {
     console.error(err, "Error en getTypeDietId");
