@@ -12,7 +12,7 @@ export const MyFavorites = () => {
 
   }, [ recipes ])
   return (
-    <>
+    <div className={style.container}>
       <Navbar />
       <h3 className={style.title_favorite}>My Favorites</h3>
       <div className={style.recipe_container}>
@@ -30,6 +30,6 @@ export const MyFavorites = () => {
           );
         })}
         </div>
-      </>
+      </div>
   )
 }

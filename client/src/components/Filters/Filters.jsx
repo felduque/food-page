@@ -12,7 +12,7 @@ export const Filters = () => {
     getAllRecipes().then((recipes) => {
       setRecipes(recipes);
     });
-  }, []);
+  }, [recipes]);
 
   const handleSort = (e) => {
     e.preventDefault();

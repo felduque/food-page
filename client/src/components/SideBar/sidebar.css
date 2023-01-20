@@ -118,10 +118,12 @@
 }  
 
 .return_home {
-	background-color: #b67b34;
-	color: #f6f7f9;
+	background-color: #1F1A3A;
+	color: #ffffff;
 	text-decoration: none;
-	border-radius: 30px;
+	font-weight: bold;
+	font-size: 15px;
+	border-radius: 5px;
 	padding: 4px;
 }
 
