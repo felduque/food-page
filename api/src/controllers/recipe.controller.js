@@ -87,7 +87,6 @@ export const createAllInfo = async (req, res) => {
           name: { [Op.iLike]: `%${name}%` } 
         },
       })
-      console.log("name")
       if (!!findTypeName) {
         const id = findTypeName.id
         result.forEach(async (r) => {

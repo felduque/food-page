@@ -6,7 +6,7 @@ import cors from 'cors';
 const app = express();
 
 // Cors
-let allowedOrigins = ['*'];
+let allowedOrigins = ["http://localhost:3000"];
 app.use(cors({
   origin: function(origin, callback){
     if(!origin) return callback(null, true);

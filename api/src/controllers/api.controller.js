@@ -14,7 +14,6 @@ async function getRecipes(req, res) {
           { headers }
       );
       const writeData = data.recipes.map((r) => {
-        console.log(r.diets)
           return {
               name: r.title,
               image: r.image,
