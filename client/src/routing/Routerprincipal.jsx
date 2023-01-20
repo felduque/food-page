@@ -6,6 +6,7 @@ import { CardDetail } from '../components/CardDetail/CardDetail.jsx';
 import { Filters } from '../components/Filters/Filters.jsx';
 import { Landing } from '../components/Landing/Landing.jsx';
 import { Formulario } from '../components/Formulario/Formulario.jsx';
+import { MyFavorites } from '../components/MyFavorites/MyFavorites.jsx';
 export const Routerprincipal = () => {
   return (
     <>
@@ -16,6 +17,7 @@ export const Routerprincipal = () => {
       <Route path="/recipe/:id" element={<CardDetail />} />
       <Route path="/filters" element={<Filters />} />
       <Route path="/form" element={<Formulario />} />
+      <Route path="/favorites" element={<MyFavorites />} />
     </Routes>
     </>
   )

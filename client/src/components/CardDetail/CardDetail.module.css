@@ -24,16 +24,25 @@
 }
 .score {
   position: absolute;
-  top: 10px;
-  right: 100px;
-  color: rgb(243, 73, 0);
+  top: 367px;
+  left: 100px;
+  width: 80px;
+  background-color: #292348;
+  border-radius: 10px;
+  color: rgb(255, 255, 255);
   font-size: 36px;
   text-shadow: 1px 1px black;
 }
 .star {
   position: absolute;
-  top: 40px;
-  right: 145px;
+  top: 403px;
+  left: 30px;
+}
+
+.favorite {
+  position: absolute;
+  top: 10px;
+  right: 30px;
   color: rgb(243, 73, 0);
   font-size: 36px;
   text-shadow: 1px 1px black;

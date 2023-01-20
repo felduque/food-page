@@ -18,6 +18,9 @@ export const Navbar = () => {
             <li>
             <Link to="/form"> <strong>Create Recipe</strong></Link> 
             </li>
+            <li>
+            <Link to="/favorites"> <strong>Favorite</strong></Link> 
+            </li>
           </ul>
         </nav>
 ) 

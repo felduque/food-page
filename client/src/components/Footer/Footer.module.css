@@ -1,0 +1,13 @@
+/*ESTILOS PARA EL PIE DE PÁGINA*/
+
+
+.footer_text{
+  display: flex;
+  justify-content: flex-start;
+}
+
+.github_footer {
+  margin-left: 15px;
+  margin-top: 25px;
+  
+}

@@ -7,6 +7,11 @@ import { Star } from "../Icons/Star.js";
 import { Link } from "react-router-dom";
 import { HomeIcon } from "../Icons/Home.js";
 import { Loading } from "../Loading/Loading.jsx";
+import { saveStorage } from "../Helpers/SaveStorage.js";
+import { Favorite } from "../Icons/Favorite.js";
+import { UnFavorite } from "../Icons/UnFavorite.js";
+// import { useDispatch } from "react-redux";
+// import { addFavorite } from "../../redux/reducers/favoritesSlice.js";
 
 export const CardDetail = (props) => {
   const [loading, setLoading] = useState(true);
@@ -15,22 +20,44 @@ export const CardDetail = (props) => {
   }, 3000);
   const { id } = useParams();
   const [recipes, setRecipes] = useState({});
+  const [localStore, setLocalStore] = useState([]);
   useEffect(() => {
     getRecipeId(id).then((recipe) => {
       setRecipes(recipe);
     });
+    const local = JSON.parse(localStorage.getItem("favorites"));
+    setLocalStore(local);
   }, [id]);
+
+
+  const addFavorite = (e) => {
+    e.preventDefault();
+    const favorite = {
+      id: recipes.id,
+      name: recipes.name,
+      image: recipes.image,
+    };
+    setLocalStore(saveStorage(favorite));
+  }
+
+
   if(loading) return (<Loading />)
   return (
     <>
       <div className={style.cardDetail_container}>
         <img className={style.imagen} src={recipes.image} alt={recipes.name} />
+
+        {localStore.find((e) => e.id === recipes.id) ? (
+          <Favorite width={60} height={60} color="443C69" className={style.favorite} onClick={addFavorite} />
+        ): (
+          <UnFavorite width={60} height={60} className={style.favorite} onClick={addFavorite} />
+        )}
+
         <Link className={style.homeIco} to="/home">
             <HomeIcon width={60} height={60} />
           </Link >
-        <span className={style.star}>
-          <Star />
-        </span>
+          <Star width={40} height={40} className={style.star} />
+        
         <p className={style.score}>{recipes.healthscore}</p>
         <div className={style.cardInfo}>
           <h1>{recipes.name}</h1>
@@ -52,7 +79,6 @@ export const CardDetail = (props) => {
               <span># {i} |</span> {s}
             </li>
           ))}
-          
         </div>
       </div>
     </>

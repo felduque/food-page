@@ -20,3 +20,14 @@
   margin-left: 15px;
   margin-top: 30px;
 }
+
+.footer{
+  grid-area: footer;
+  height: 100px;
+  background: #d1defa;
+  color: #454545;
+  border-top: 1px solid white;
+  text-align: left;
+  line-height: 68px;
+  padding-left: 25px;
+}

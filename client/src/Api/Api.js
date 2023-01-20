@@ -52,7 +52,7 @@ export async function getRecipeByName(name) {
 
 export async function getAllTypeDiets() {
   try {
-    const { data } = await axios.get("https://food-backend.fly.dev/types");
+    const { data } = await axios.get("https://food-backend.fly.dev/typediet");
     return data;
   } catch (err) {
     console.error(err, "Error en getAllTypeDiets");
@@ -61,7 +61,7 @@ export async function getAllTypeDiets() {
 
 export async function getTypeDietId(id) {
   try {
-    const { data } = await axios.get(`https://food-backend.fly.dev/types/${id}`);
+    const { data } = await axios.get(`https://food-backend.fly.dev/typediet/${id}`);
     return data;
   } catch (err) {
     console.error(err, "Error en getTypeDietId");

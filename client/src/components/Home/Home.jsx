@@ -19,7 +19,6 @@ export const Home = () => {
   const totalpage = Math.ceil(lengthRecipe / 3 - 1);
   const dispatch = useDispatch();
   const [ pagination, setPagination ] = useState(6)
-  console.log(totalpage)
 
   useEffect(() => {
     getAllRecipes().then((recipes) => {

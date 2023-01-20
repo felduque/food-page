@@ -14,8 +14,6 @@ export const Filters = () => {
     });
   }, []);
 
-  console.log(recipes);
-
   const handleSort = (e) => {
     e.preventDefault();
     if(health === true && e.target.value === "desc") {

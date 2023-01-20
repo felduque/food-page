@@ -1,17 +1,23 @@
 import style from "./Formulario.module.css";
 import { useState, useEffect } from "react";
-import { validate } from "./validate";
-import { createRecipe, createAllInfo, getAllRecipes } from "../../Api/Api";
+import { validate } from "../Helpers/validate";
+import {
+  createRecipe,
+  createAllInfo,
+  getAllRecipes,
+  getAllTypeDiets,
+} from "../../Api/Api";
 import { Navbar } from "../Navbar/Navbar";
 import { useNavigate } from "react-router-dom";
 import { Loading } from "../Loading/Loading";
 export const Formulario = () => {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
-  const [errors, setErrors] = useState({});
+  const [buttonDisable, setbuttonDisable] = useState(true);
+  const [typeDiets, setTypeDiets] = useState([]);
   const [steps, setSteps] = useState("");
   const [dishtypes, setDishtypes] = useState("");
-  const [buttonDisable, setbuttonDisable] = useState(true);
+  const [errors, setErrors] = useState({});
   const [dataRecipe, setDataRecipe] = useState({
     name: "",
     summary: "",
@@ -21,6 +27,7 @@ export const Formulario = () => {
     dishtypes: [],
     typedietId: "",
   });
+
   const handleChange = (e) => {
     setErrors(
       validate({
@@ -150,20 +157,22 @@ export const Formulario = () => {
   // let recipe = recipes[random]
   const createRecipeAuto = async (e) => {
     e.preventDefault();
-
+    alert("Espere unos segundos mientras se crea la receta");
     await createAllInfo();
 
     setTimeout(() => {
       getAllRecipes().then((res) => {
         let recipe = res[res.length - 1];
         let id = recipe.id;
-        console.log(id);
         navigate(`/recipe/${id}`);
       });
     }, 3000);
   };
 
   useEffect(() => {
+    getAllTypeDiets().then((res) => {
+      setTypeDiets(res);
+    });
     if (
       dataRecipe.name.length > 5 &&
       dataRecipe.summary.length > 50 &&
@@ -321,7 +330,10 @@ export const Formulario = () => {
               </li>
             );
           })}
-        <label htmlFor="diets">Diets</label>
+        <label htmlFor="diets">Diets | Select Id </label>
+        <span className={style.dietList}>
+          {typeDiets && typeDiets.map((e) => <li className={style.list} key={e.id}><span className={style.count}>  {e.id} </span> {e.name}</li>)}
+        </span>
         <span className={style.err}>
           {errors.typedietId && <p className="error">{errors.typedietId}</p>}
         </span>
