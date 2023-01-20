@@ -11,6 +11,7 @@ export const MyFavorites = () => {
     setRecipes(local)
 
   }, [ recipes ])
+  if(!recipes) return (<h1>Recipes Favorite empty</h1>)
   return (
     <div className={style.container}>
       <Navbar />

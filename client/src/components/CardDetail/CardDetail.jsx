@@ -47,7 +47,7 @@ export const CardDetail = (props) => {
       <div className={style.cardDetail_container}>
         <img className={style.imagen} src={recipes.image} alt={recipes.name} />
 
-        {localStore.find((e) => e.id === recipes.id) ? (
+        {localStore && localStore.find((e) => e.id === recipes.id) ? (
           <Favorite width={60} height={60} color="443C69" className={style.favorite} onClick={addFavorite} />
         ): (
           <UnFavorite width={60} height={60} className={style.favorite} onClick={addFavorite} />
