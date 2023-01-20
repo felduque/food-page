@@ -10,8 +10,6 @@ import { Loading } from "../Loading/Loading.jsx";
 import { saveStorage } from "../Helpers/SaveStorage.js";
 import { Favorite } from "../Icons/Favorite.js";
 import { UnFavorite } from "../Icons/UnFavorite.js";
-// import { useDispatch } from "react-redux";
-// import { addFavorite } from "../../redux/reducers/favoritesSlice.js";
 
 export const CardDetail = (props) => {
   const [loading, setLoading] = useState(true);
