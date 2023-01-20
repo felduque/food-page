@@ -9,7 +9,8 @@ export const MyFavorites = () => {
   useEffect(() => {
     const local = JSON.parse(localStorage.getItem('favorites'))
     setRecipes(local)
-  }, [ recipes ])
+  }, [ ])
+
   if(!recipes) return (<h1>Recipes Favorite empty</h1>)
   return (
     <div className={style.container}>
