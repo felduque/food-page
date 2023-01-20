@@ -28,8 +28,6 @@ export const CardDetail = (props) => {
     const local = JSON.parse(localStorage.getItem("favorites"));
     setLocalStore(local);
   }, [id]);
-
-
   const addFavorite = (e) => {
     e.preventDefault();
     const favorite = {
@@ -39,8 +37,6 @@ export const CardDetail = (props) => {
     };
     setLocalStore(saveStorage(favorite));
   }
-
-
   if(loading) return (<Loading />)
   return (
     <>
