@@ -4,7 +4,7 @@ import axios from "axios";
 
 export async function createRecipe(dataRecipe) {
   try {
-    await axios.post("https://food-app.fly.dev/recipes/recipes", dataRecipe);
+    await axios.post("https://food-app.fly.dev/recipes", dataRecipe);
   } catch (err) {
     console.error(err, "Error en createRecipe");
   }
@@ -12,7 +12,7 @@ export async function createRecipe(dataRecipe) {
 
 export async function createAllInfo() {
   try {
-    await axios.post("https://food-app.fly.dev/recipes/api/getallinfo");
+    await axios.post("https://food-app.fly.dev/api/getallinfo");
   } catch (err) {
     console.error(err, "Error en createAllInfo");
   }
@@ -20,9 +20,7 @@ export async function createAllInfo() {
 
 export async function getAllRecipes() {
   try {
-    const { data } = await axios.get(
-      "https://food-app.fly.dev/recipes/recipes"
-    );
+    const { data } = await axios.get("https://food-app.fly.dev/recipes");
     return data;
   } catch (err) {
     console.error(err, "Error en getAllRecipes");
@@ -32,7 +30,7 @@ export async function getAllRecipes() {
 export async function getRecipeId(id) {
   try {
     const { data } = await axios.get(
-      `https://food-app.fly.dev/recipes/recipes/id/${id}`
+      `https://food-app.fly.dev/recipes/id/${id}`
     );
     return data;
   } catch (err) {
@@ -43,7 +41,7 @@ export async function getRecipeId(id) {
 export async function getRecipeByName(name) {
   try {
     const { data } = await axios.get(
-      `https://food-app.fly.dev/recipes/recipes/name/${name}`
+      `https://food-app.fly.dev/recipes/name/${name}`
     );
     return data;
   } catch (err) {
@@ -55,9 +53,7 @@ export async function getRecipeByName(name) {
 
 export async function getAllTypeDiets() {
   try {
-    const { data } = await axios.get(
-      "https://food-app.fly.dev/recipes/typediet"
-    );
+    const { data } = await axios.get("https://food-app.fly.dev/typediet");
     return data;
   } catch (err) {
     console.error(err, "Error en getAllTypeDiets");
@@ -66,9 +62,7 @@ export async function getAllTypeDiets() {
 
 export async function getTypeDietId(id) {
   try {
-    const { data } = await axios.get(
-      `https://food-app.fly.dev/recipes/typediet/${id}`
-    );
+    const { data } = await axios.get(`https://food-app.fly.dev/typediet/${id}`);
     return data;
   } catch (err) {
     console.error(err, "Error en getTypeDietId");
